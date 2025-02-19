@@ -1,0 +1,26 @@
+# Virtual environment
+venv/
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Logs and temporary files
+logs/
+*.log
+*.out
+*.err
+
+# Environment and dependency files
+.env
+*.env
+.DS_Store
+
+# VS Code settings (optional)
+.vscode/
+
+# WSL and Linux-specific files
+*.swp
