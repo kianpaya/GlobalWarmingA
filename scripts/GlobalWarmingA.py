@@ -6,12 +6,8 @@ import warnings
 
 warnings.filterwarnings('ignore')
 
-# Mount Google Drive
-from google.colab import drive
-drive.mount('/content/drive')
-
 # Load dataset
-df = pd.read_csv("/content/drive/MyDrive/Global_warming/GlobalTemperatures.csv")
+df = pd.read_csv("/data/GlobalTemperatures.csv")
 
 # Standardize date format
 def standardize_date_format(date_str):
