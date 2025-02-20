@@ -24,3 +24,4 @@ logs/
 
 # WSL and Linux-specific files
 *.swp
+google-cloud-sdk/
