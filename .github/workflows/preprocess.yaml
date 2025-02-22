@@ -1,0 +1,37 @@
+name: Preprocess Data on BigQuery
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  preprocess:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Authenticate with Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          workload_identity_provider: "projects/773600925580/locations/global/workloadIdentityPools/vertex-ai-wif/providers/vertex-ai-github-provider"
+          service_account: "vertex-ai-global-warming-sa@vertex-ai-451206.iam.gserviceaccount.com"
+
+      - name: Install Google Cloud SDK
+        run: |
+          sudo apt update && sudo apt install -y google-cloud-sdk
+          gcloud auth login --brief
+
+      - name: Install Python and dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install google-cloud-bigquery pandas
+
+      - name: Run preprocessing
+        run: |
+          source venv/bin/activate
+          python scripts/preprocess.py
